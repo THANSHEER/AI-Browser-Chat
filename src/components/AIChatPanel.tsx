@@ -115,7 +115,7 @@ export function AIChatPanel({
 		// eslint-disable-next-line obsidianmd/prefer-active-doc -- webview must use document.createElement; activeDocument does not support custom elements
 		const webview = document.createElement("webview") as EmbeddedWebviewElement;
 		webview.className = "ai-chat-browser-webview";
-		webview.setAttribute("partition", "persist:ai-chat");
+		webview.setAttribute("partition", "persist:aibrowser-chat");
 		webview.setAttribute("allowpopups", "");
 		webview.setAttribute("webpreferences", "contextIsolation=yes");
 		// Override the UA so sites don't detect the Electron webview environment.
