@@ -4,7 +4,7 @@ import { ItemView, WorkspaceLeaf } from "obsidian";
 import AIChatPlugin from "../main";
 import { AIChatPanel } from "../components/AIChatPanel";
 
-export const AI_CHAT_VIEW_TYPE = "ai-chat-sidebar";
+export const AI_CHAT_VIEW_TYPE = "aibrowser-chat-view";
 
 export class AIChatView extends ItemView {
 	plugin: AIChatPlugin;

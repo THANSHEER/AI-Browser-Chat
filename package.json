@@ -1,5 +1,5 @@
 {
-	"name": "ai-chat",
+	"name": "aibrowser-chat",
 	"version": "1.0.0",
 	"description": "Obsidian plugin — embeds AI chat services in a sidebar and injects vault notes as context.",
 	"main": "main.js",
