@@ -27,6 +27,9 @@ export interface DockSettings {
 	enablePerplexity: boolean;
 	enableGemini: boolean;
 	enableGrok: boolean;
+	enableCopilot: boolean;
+	enableManus: boolean;
+	enableKimi: boolean;
 	autoRefreshMinutes: number;
 	defaultService: ServiceKey;
 	autoClearContext: boolean;
@@ -50,6 +53,9 @@ export const DEFAULT_SETTINGS: DockSettings = {
 	enablePerplexity: true,
 	enableGemini: true,
 	enableGrok: true,
+	enableCopilot: true,
+	enableManus: true,
+	enableKimi: true,
 	autoRefreshMinutes: 60,
 	defaultService: "chatgpt",
 	autoClearContext: false,
@@ -146,6 +152,39 @@ export class AIChatSettingTab extends PluginSettingTab {
 				}),
 			);
 
+		new Setting(containerEl)
+			.setName("Enable Copilot")
+			.setDesc("Show Microsoft Copilot in the service dropdown.")
+			.addToggle((t) =>
+				t.setValue(this.plugin.settings.enableCopilot).onChange(async (v) => {
+					this.plugin.settings.enableCopilot = v;
+					await this.plugin.saveSettings();
+					this.plugin.rerenderOpenViews();
+				}),
+			);
+
+		new Setting(containerEl)
+			.setName("Enable Manus AI")
+			.setDesc("Show Manus AI in the service dropdown.")
+			.addToggle((t) =>
+				t.setValue(this.plugin.settings.enableManus).onChange(async (v) => {
+					this.plugin.settings.enableManus = v;
+					await this.plugin.saveSettings();
+					this.plugin.rerenderOpenViews();
+				}),
+			);
+
+		new Setting(containerEl)
+			.setName("Enable Kimi")
+			.setDesc("Show Kimi (Moonshot AI) in the service dropdown.")
+			.addToggle((t) =>
+				t.setValue(this.plugin.settings.enableKimi).onChange(async (v) => {
+					this.plugin.settings.enableKimi = v;
+					await this.plugin.saveSettings();
+					this.plugin.rerenderOpenViews();
+				}),
+			);
+
 		new Setting(containerEl).setName("Sidebar").setHeading();
 
 		new Setting(containerEl)
@@ -173,6 +212,9 @@ export class AIChatSettingTab extends PluginSettingTab {
 				d.addOption("perplexity", "Perplexity");
 				d.addOption("gemini",     "Gemini");
 				d.addOption("grok",       "Grok");
+				d.addOption("copilot",    "Copilot");
+				d.addOption("manus",      "Manus AI");
+				d.addOption("kimi",       "Kimi");
 				d.setValue(this.plugin.settings.defaultService);
 				d.onChange(async (value) => {
 					const key = value as ServiceKey;

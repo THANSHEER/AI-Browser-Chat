@@ -16,6 +16,9 @@ export interface AIChatPanelProps {
 	enablePerplexity: boolean;
 	enableGemini: boolean;
 	enableGrok: boolean;
+	enableCopilot: boolean;
+	enableManus: boolean;
+	enableKimi: boolean;
 	autoRefreshMinutes: number;
 	autoClearContext: boolean;
 	contextPrefix: string;
@@ -51,6 +54,9 @@ export function AIChatPanel({
 	enablePerplexity,
 	enableGemini,
 	enableGrok,
+	enableCopilot,
+	enableManus,
+	enableKimi,
 	autoRefreshMinutes,
 	autoClearContext,
 	contextPrefix,
@@ -87,6 +93,9 @@ export function AIChatPanel({
 		perplexity: enablePerplexity,
 		gemini:     enableGemini,
 		grok:       enableGrok,
+		copilot:    enableCopilot,
+		manus:      enableManus,
+		kimi:       enableKimi,
 	};
 
 	const [activeUrl, setActiveUrl] = useState(() => {
@@ -111,7 +120,7 @@ export function AIChatPanel({
 				onUrlChange?.(newUrl);
 			}
 		}
-	}, [enableChatGPT, enableClaude, enableDeepSeek, enablePerplexity, enableGemini, enableGrok]);
+	}, [enableChatGPT, enableClaude, enableDeepSeek, enablePerplexity, enableGemini, enableGrok, enableCopilot, enableManus, enableKimi]);
 
 	useEffect(() => {
 		onContextItemsChange?.(items);
@@ -462,7 +471,7 @@ export function AIChatPanel({
 
 	// ── Render ─────────────────────────────────────────────────
 
-	const hasServices = enableChatGPT || enableClaude || enableDeepSeek || enablePerplexity || enableGemini || enableGrok;
+	const hasServices = enableChatGPT || enableClaude || enableDeepSeek || enablePerplexity || enableGemini || enableGrok || enableCopilot || enableManus || enableKimi;
 	const hasItems    = items.length > 0;
 
 	return (
@@ -510,6 +519,9 @@ export function AIChatPanel({
 								{enablePerplexity && <option value="perplexity">Perplexity</option>}
 								{enableGemini     && <option value="gemini">Gemini</option>}
 								{enableGrok       && <option value="grok">Grok</option>}
+								{enableCopilot    && <option value="copilot">Copilot</option>}
+								{enableManus      && <option value="manus">Manus AI</option>}
+								{enableKimi       && <option value="kimi">Kimi</option>}
 							</select>
 							<span className="vc-select-caret" aria-hidden="true" />
 						</div>

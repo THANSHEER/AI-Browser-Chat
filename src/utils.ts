@@ -19,6 +19,9 @@ export function getServiceKey(url: string): ServiceKey | null {
 	if (lower.includes("perplexity.ai"))                                     return "perplexity";
 	if (lower.includes("gemini.google.com"))                                 return "gemini";
 	if (lower.includes("grok.com"))                                          return "grok";
+	if (lower.includes("copilot.microsoft.com"))                             return "copilot";
+	if (lower.includes("manus.im"))                                          return "manus";
+	if (lower.includes("kimi.ai"))                                           return "kimi";
 	return null;
 }
 
